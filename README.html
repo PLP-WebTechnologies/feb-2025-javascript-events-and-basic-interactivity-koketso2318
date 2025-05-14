@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JS Event Playground</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f2f8fc;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    img.header-image {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #gallery img {
+      display: block;
+      margin-bottom: 10px;
+      max-width: 300px;
+    }
+
+    .tab-content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    input {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+    }
+
+    input:invalid {
+      border-color: red;
+    }
+
+    input:valid {
+      border-color: green;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Playground Image -->
+  <img src="https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif" alt="Playground Animation" class="header-image" />
+
+  <h1>Interactive JS Playground</h1>
+
+  <!-- Buttons -->
+  <button id="clickBtn">Click Me!</button>
+  <button id="hoverBtn">Hover Over Me!</button>
+  <button id="dblClickBtn">Double Click Me!</button>
+
+  <!-- Image Gallery -->
+  <div id="gallery">
+    <img id="mainImage" src="https://via.placeholder.com/300" alt="Gallery" />
+    <div>
+      <button class="gallery-btn" data-img="1">1</button>
+      <button class="gallery-btn" data-img="2">2</button>
+      <button class="gallery-btn" data-img="3">3</button>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab" data-tab="1">Tab 1</button>
+    <button class="tab" data-tab="2">Tab 2</button>
+    <button class="tab" data-tab="3">Tab 3</button>
+  </div>
+  <div class="tab-content" id="tab1">This is Tab 1 content.</div>
+  <div class="tab-content" id="tab2">This is Tab 2 content.</div>
+  <div class="tab-content" id="tab3">This is Tab 3 content.</div>
+
+  <!-- Form -->
+  <form id="signupForm">
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password (min 8 characters)" required />
+    <button type="submit">Sign Up</button>
+    <p id="formFeedback"></p>
+  </form>
+
+  <script>
+    // Button Events
+    document.getElementById("clickBtn").addEventListener("click", () => {
+      alert("Button Clicked!");
+    });
+
+    document.getElementById("hoverBtn").addEventListener("mouseover", () => {
+      alert("You hovered over the button!");
+    });
+
+    document.getElementById("dblClickBtn").addEventListener("dblclick", () => {
+      alert("Double-click magic!");
+    });
+
+    // Keypress Detection
+    document.addEventListener("keydown", (e) => {
+      console.log(`Key pressed: ${e.key}`);
+    });
+
+    // Image Gallery
+    const mainImage = document.getElementById("mainImage");
+    document.querySelectorAll(".gallery-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        mainImage.src = `https://via.placeholder.com/300?text=Image+${btn.dataset.img}`;
+      });
+    });
+
+    // Tabs
+    const
